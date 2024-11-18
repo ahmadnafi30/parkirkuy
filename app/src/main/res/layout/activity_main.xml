@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/firtspage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.MainActivity">
+
+    <ImageView
+        android:id="@+id/fp_rafiki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rafiki"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="200dp"
+        />
+
+    <TextView
+        android:id="@+id/fp_parkirkuyfont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fp_rafiki"
+        app:layout_constraintBottom_toBottomOf="@id/fp_rafiki"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        android:text="@string/app_name"
+        android:textColor="@color/main"
+        android:fontFamily="@font/suze"
+        android:textSize="45sp"
+        />
+    <TextView
+        android:id="@+id/fp_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/fp_parkirkuyfont"
+        app:layout_constraintBottom_toBottomOf="@id/fp_parkirkuyfont"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/slogan"
+        android:textColor="@color/main"
+        android:fontFamily="@font/suze"
+        android:textSize="15sp"
+        />
+
+    <ImageButton
+        android:id="@+id/fp_buttonstarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/buttongetstrated"
+        app:layout_constraintTop_toBottomOf="@id/fp_slogan"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:outlineSpotShadowColor="@color/white"
+        android:outlineAmbientShadowColor="@color/black"
+        android:backgroundTint="@android:color/transparent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:id="@+id/detailkendaraanpage">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/dk_logo"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="350dp" />
+
+    <!-- Text instruction -->
+    <TextView
+        android:id="@+id/dk_perintah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Complete your vehicle information"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/main"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dk_logo"
+        android:fontFamily="@font/suze" />
+
+    <!-- Vehicle Category Text -->
+    <TextView
+        android:id="@+id/dk_perintahisidetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Category"
+        app:layout_constraintTop_toBottomOf="@id/dk_perintah"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginHorizontal="50dp"
+        android:textStyle="bold"
+
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/main"
+        android:includeFontPadding="false" />
+
+    <!-- Vehicle Type Buttons -->
+    <LinearLayout
+        android:id="@+id/dk_vehicletypebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dk_perintahisidetail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp">
+
+        <ImageButton
+            android:id="@+id/dk_buttonleftvehicle"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:src="@drawable/dkbuttonleft"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/dk_buttonrightvehicle"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:src="@drawable/dkbuttonright"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/dk_vehicletypeimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dk_perintahisidetail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="3dp">
+
+        <ImageButton
+            android:id="@+id/dk_imageleftvehicle"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@drawable/motor"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
+
+        <ImageButton
+            android:id="@+id/dk_imagerightvehicle"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:src="@drawable/car"
+            android:layout_marginTop="4dp"
+
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/dk_perintahwarna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vehicle Color"
+        app:layout_constraintTop_toBottomOf="@id/dk_vehicletypebutton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginHorizontal="50dp"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/main"
+        android:includeFontPadding="false" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dk_colorcontainerr"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginHorizontal="50dp"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/dk_perintahwarna"
+        android:background="@drawable/edittextbkgbefore">
+
+        <EditText
+            android:id="@+id/dk_inputcolor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/jakartasans"
+            android:hint="Enter color"
+            android:inputType="text"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="15sp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/dk_perintahplatnomor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="License Plate"
+        app:layout_constraintTop_toBottomOf="@id/dk_colorcontainerr"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginHorizontal="50dp"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/main" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/platnomorcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@id/dk_perintahplatnomor"
+        android:background="@drawable/edittextbkgbefore">
+
+        <EditText
+            android:id="@+id/lp_inputplatnomor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:hint="format : XX number YY"
+            android:padding="0dp"
+            android:textSize="15sp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <ImageButton
+        android:id="@+id/dk_save_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/savebtn"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toBottomOf="@id/platnomorcontainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:backgroundTint="@android:color/transparent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

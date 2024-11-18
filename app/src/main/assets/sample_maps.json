@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "name": "Fakultas Ilmu Komputer",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.983008,
+          "lng": 112.619369
+        }
+      }
+    },
+    {
+      "name": "Fakultas Teknik",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.981374,
+          "lng": 112.619806
+        }
+      }
+    },
+    {
+      "name": "Fakultas Pertanian",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.980119,
+          "lng": 112.617594
+        }
+      }
+    },
+    {
+      "name": "Fakultas Ekonomi dan Bisnis",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.979258,
+          "lng": 112.619231
+        }
+      }
+    },
+    {
+      "name": "Fakultas Hukum",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.981854,
+          "lng": 112.617825
+        }
+      }
+    },
+    {
+      "name": "Fakultas Kedokteran",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.980493,
+          "lng": 112.618136
+        }
+      }
+    },
+    {
+      "name": "Fakultas Ilmu Sosial dan Ilmu Politik",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.979746,
+          "lng": 112.617278
+        }
+      }
+    },
+    {
+      "name": "Fakultas Seni dan Desain",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.978801,
+          "lng": 112.620262
+        }
+      }
+    },
+    {
+      "name": "Fakultas Peternakan",
+      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
+      "geometry": {
+        "location": {
+          "lat": -7.981942,
+          "lng": 112.617069
+        }
+      }
+    }
+  ]
+}
