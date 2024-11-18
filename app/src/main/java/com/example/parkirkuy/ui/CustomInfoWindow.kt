@@ -1,33 +1,31 @@
-package com.example.parkirkuy.ui
-
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import com.example.parkirkuy.R
-import com.example.parkirkuy.databinding.LayoutTooltipBinding
+import com.example.parkirkuy.ui.ModelMain
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.infowindow.InfoWindow
 
-class CustomInfoWindow(mapView: MapView?) : InfoWindow(R.layout.layout_tooltip, mapView) {
+class CustomInfoWindow(mapView: MapView, private val context: Context) : InfoWindow(R.layout.layout_tooltip, mapView) {
+    override fun onOpen(item: Any?) {
+        val model = (item as? Marker)?.relatedObject as? ModelMain ?: return
+        val tvNamaLokasi = mView.findViewById<TextView>(R.id.tvNamaLokasi)
+        val tvAlamat = mView.findViewById<TextView>(R.id.tvAlamat)
+        val btnDetail = mView.findViewById<Button>(R.id.btnDetail)
 
-    private lateinit var binding: LayoutTooltipBinding
+        tvNamaLokasi.text = model.strName
+        tvAlamat.text = model.strVicinity
 
-    override fun onClose() {
-        // No action when closing
+        btnDetail.setOnClickListener {
+            Toast.makeText(context, "Detail lokasi: ${model.strName}", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    override fun onOpen(item: Any) {
-        val marker = item as Marker
-        val infoWindowData = marker.relatedObject as ModelMain
-
-        // Use View Binding to reference the views
-        binding = LayoutTooltipBinding.bind(mView)  // mView is the root view of the info window
-
-        // Set the data from the ModelMain object
-        binding.tvNamaLokasi.text = infoWindowData.strName
-        binding.tvAlamat.text = infoWindowData.strVicinity
-
-        // Handle the close button click
-        binding.imageClose.setOnClickListener {
-            marker.closeInfoWindow()
-        }
+    override fun onClose() {
+        // Kosongkan jika tidak ada aksi tambahan
     }
 }

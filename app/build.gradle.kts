@@ -1,4 +1,5 @@
 // build.gradle (Module: app)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -7,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.example.parkirkuy"
-    compileSdk = 34
+    compileSdk = 34  // Pastikan menggunakan compileSdk terbaru yang stabil
 
     defaultConfig {
         applicationId = "com.example.parkirkuy"
-        minSdk = 29
-        targetSdk = 34
+        minSdk = 29  // Tentukan minimal SDK yang dibutuhkan
+        targetSdk = 34  // Sesuaikan dengan target SDK terbaru
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -34,27 +35,33 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "1.8"  // Set JVM Target to 1.8
     }
 
     buildFeatures {
-        viewBinding = true
+        viewBinding = true  // Aktifkan ViewBinding
     }
-
-
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.play.services.maps)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.osmdroid.android)
-    implementation(libs.androidx.appcompat.v161)
-//    implementation("com.github.jjoe64:android-chart:1.5.3")
+    // Core libraries (AndroidX)
+    implementation(libs.androidx.core.ktx)  // KTX Extensions for AndroidX Core
+    implementation(libs.androidx.appcompat)  // AndroidX AppCompat
+    implementation(libs.material)  // Material Components for AndroidX
+    implementation(libs.androidx.activity)  // AndroidX Activity
+    implementation(libs.androidx.constraintlayout)  // ConstraintLayout
+
+    // Google Maps & Services (AndroidX)
+    implementation(libs.play.services.maps)  // Google Play Services Maps
+
+    // Testing dependencies (AndroidX)
+    testImplementation(libs.junit)  // JUnit testing framework
+    androidTestImplementation(libs.androidx.junit)  // AndroidX JUnit
+    androidTestImplementation(libs.androidx.espresso.core)  // Espresso for UI testing
+
+    // OSM Droid for OpenStreetMap (pastikan versi ini mendukung AndroidX)
+    implementation(libs.osmdroid.android)  // OpenStreetMap Android
+    implementation(libs.graphview)  // GraphView library (pastikan kompatibilitas AndroidX)
+
+
 }

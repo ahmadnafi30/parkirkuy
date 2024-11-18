@@ -1,5 +1,6 @@
 package com.example.parkirkuy.ui
 
+import CustomInfoWindow
 import LocationAdapter
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -8,6 +9,7 @@ import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,25 +25,21 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.CustomZoomButtonsController
 import org.osmdroid.views.MapController
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.OverlayItem
 import java.io.IOException
 import java.nio.charset.StandardCharsets
 
 class MapsActivity : AppCompatActivity() {
     private lateinit var mapController: MapController
     private lateinit var adapter: LocationAdapter
-    private var modelMainList: MutableList<ModelMain> = ArrayList()
+    private var modelMainList: MutableList<ModelMain> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-        Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
-
         initMap()
         setupRecyclerView()
-//        setupSearchView()
-        loadLocationMarkers() // Load and show markers
+        loadLocationMarkers()
     }
 
     private fun initMap() {
@@ -51,8 +49,8 @@ class MapsActivity : AppCompatActivity() {
         mapView.zoomController.setVisibility(CustomZoomButtonsController.Visibility.NEVER)
 
         mapController = mapView.controller as MapController
-        val jakartaGeoPoint = GeoPoint(-6.2088, 106.8456)
-        mapController.setCenter(jakartaGeoPoint)
+        val initialGeoPoint = GeoPoint( -7.95235, 112.61296) // Jakarta
+        mapController.setCenter(initialGeoPoint)
         mapController.zoomTo(15)
     }
 
@@ -109,12 +107,17 @@ class MapsActivity : AppCompatActivity() {
                 icon = markerIcon
                 title = model.strName
                 snippet = model.strVicinity
+                relatedObject = model // Simpan model untuk digunakan di InfoWindow
+            }
 
-                // Assign related object to the marker to pass it to the custom info window
-                relatedObject = model
+            val customInfoWindow = CustomInfoWindow(mapView, this)
+            marker.infoWindow = customInfoWindow
 
-                // Use the custom InfoWindow
-                setInfoWindow(CustomInfoWindow(mapView))
+            // Tambahkan listener untuk klik marker
+            marker.setOnMarkerClickListener { clickedMarker, map ->
+                clickedMarker.showInfoWindow() // Tampilkan InfoWindow
+                mapController.animateTo(clickedMarker.position) // Fokus ke marker
+                true
             }
 
             mapView.overlays.add(marker)
@@ -123,12 +126,23 @@ class MapsActivity : AppCompatActivity() {
     }
 
 
-    private fun showLocationInfo(model: ModelMain) {
+
+    private fun setupRecyclerView() {
+        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
+        adapter = LocationAdapter(modelMainList) { model ->
+            showTooltip(model)
+        }
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+    }
+
+    private fun showTooltip(model: ModelMain) {
         val inflater = LayoutInflater.from(this)
         val tooltipView = inflater.inflate(R.layout.layout_tooltip, null)
 
         val tvNamaLokasiTooltip = tooltipView.findViewById<TextView>(R.id.tvNamaLokasi)
         val tvAlamatTooltip = tooltipView.findViewById<TextView>(R.id.tvAlamat)
+        val btnDetail = tooltipView.findViewById<Button>(R.id.btnDetail)
         val imageCloseTooltip = tooltipView.findViewById<ImageView>(R.id.imageClose)
         val cardViewTooltip = tooltipView.findViewById<CardView>(R.id.cvContent)
 
@@ -136,53 +150,29 @@ class MapsActivity : AppCompatActivity() {
         tvAlamatTooltip.text = model.strVicinity
         cardViewTooltip.visibility = View.VISIBLE
 
-        imageCloseTooltip.setOnClickListener {
-            cardViewTooltip.visibility = View.GONE
-        }
+        val geoPoint = GeoPoint(model.latLoc, model.longLoc)
+        mapController.animateTo(geoPoint)
 
-        val layoutContainer: ViewGroup = findViewById(R.id.rootLayout)
-        layoutContainer.addView(tooltipView)
-    }
-
-    private fun setupRecyclerView() {
-        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.recyclerView)
-        adapter = LocationAdapter(modelMainList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
-    }
-
-    private fun setupSearchView() {
-        val searchView = findViewById<androidx.appcompat.widget.SearchView>(R.id.searchView)
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { filterLocations(it) }
-                return true
+        // Tampilkan info window pada marker yang sesuai
+        val mapView = findViewById<org.osmdroid.views.MapView>(R.id.mapView)
+        for (overlay in mapView.overlays) {
+            if (overlay is Marker && overlay.position.latitude == model.latLoc && overlay.position.longitude == model.longLoc) {
+                overlay.showInfoWindow()
+            } else if (overlay is Marker) {
+                overlay.closeInfoWindow()
             }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { filterLocations(it) }
-                return true
-            }
-        })
-    }
-
-    private fun filterLocations(query: String) {
-        val filteredList = modelMainList.filter {
-            it.strName.contains(query, ignoreCase = true) ||
-                    it.strVicinity.contains(query, ignoreCase = true)
         }
-        adapter.updateData(filteredList)
-    }
+        mapView.invalidate()
 
-    override fun onResume() {
-        super.onResume()
-        Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
-        findViewById<org.osmdroid.views.MapView>(R.id.mapView).onResume()
-    }
+//        btnDetail.setOnClickListener {
+//            Toast.makeText(this, "Lihat detail lokasi: ${model.strName}", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        imageCloseTooltip.setOnClickListener {
+//            cardViewTooltip.visibility = View.GONE
+//        }
 
-    override fun onPause() {
-        super.onPause()
-        Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this))
-        findViewById<org.osmdroid.views.MapView>(R.id.mapView).onPause()
+//        val layoutContainer: ViewGroup = findViewById(R.id.rootLayout)
+//        layoutContainer.addView(tooltipView)
     }
 }

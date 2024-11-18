@@ -5,6 +5,7 @@
     <color name="main">#3C8000</color>
     <color name="background_thema">#ECECEC</color>
     <color name="grey">#CCD1CFCF</color>
+    <color name="grey2">#D9D9D9</color>
 
 
 </resources>
