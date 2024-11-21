@@ -8,6 +8,10 @@
           "lat": -7.983008,
           "lng": 112.619369
         }
+      },
+      "parking_capacity": {
+        "total": 200,
+        "available": 50
       }
     },
     {
@@ -18,6 +22,10 @@
           "lat": -7.981374,
           "lng": 112.619806
         }
+      },
+      "parking_capacity": {
+        "total": 150,
+        "available": 30
       }
     },
     {
@@ -28,6 +36,10 @@
           "lat": -7.980119,
           "lng": 112.617594
         }
+      },
+      "parking_capacity": {
+        "total": 100,
+        "available": 10
       }
     },
     {
@@ -38,6 +50,10 @@
           "lat": -7.979258,
           "lng": 112.619231
         }
+      },
+      "parking_capacity": {
+        "total": 250,
+        "available": 80
       }
     },
     {
@@ -48,46 +64,10 @@
           "lat": -7.981854,
           "lng": 112.617825
         }
-      }
-    },
-    {
-      "name": "Fakultas Kedokteran",
-      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
-      "geometry": {
-        "location": {
-          "lat": -7.980493,
-          "lng": 112.618136
-        }
-      }
-    },
-    {
-      "name": "Fakultas Ilmu Sosial dan Ilmu Politik",
-      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
-      "geometry": {
-        "location": {
-          "lat": -7.979746,
-          "lng": 112.617278
-        }
-      }
-    },
-    {
-      "name": "Fakultas Seni dan Desain",
-      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
-      "geometry": {
-        "location": {
-          "lat": -7.978801,
-          "lng": 112.620262
-        }
-      }
-    },
-    {
-      "name": "Fakultas Peternakan",
-      "vicinity": "Universitas Brawijaya, Jl. Veteran, Malang, Jawa Timur, Indonesia",
-      "geometry": {
-        "location": {
-          "lat": -7.981942,
-          "lng": 112.617069
-        }
+      },
+      "parking_capacity": {
+        "total": 120,
+        "available": 40
       }
     }
   ]

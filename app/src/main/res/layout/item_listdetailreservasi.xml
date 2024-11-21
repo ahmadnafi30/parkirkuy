@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_marginVertical="10dp"
+        android:id="@+id/containerawal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginHorizontal="30dp"
+        android:outlineSpotShadowColor="@color/grey"
+        android:outlineAmbientShadowColor="@color/grey"
+        android:background="@drawable/edittextbkg"
+        android:paddingHorizontal="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/detailreservasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="15dp"
+            >
+
+            <TextView
+                android:id="@+id/tanggalreservasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 Oktober 2024"
+                android:textColor="#474646"
+                android:fontFamily="@font/poppins"
+                android:textSize="12sp"
+                />
+
+            <ImageView
+                android:id="@+id/fotolokasiparkir"
+                android:layout_width="100dp"
+                android:layout_height="75dp"
+                android:src="@drawable/fotoparkir"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parkiran FILKOM A\nUniversitas Brawijaya"
+            android:fontFamily="@font/poppins"
+            android:textSize="10sp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:text="Status: "
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/main"
+                    android:text="Aktif "
+                    android:textSize="12sp"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail"
+                android:textSize="12sp"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="@color/main"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

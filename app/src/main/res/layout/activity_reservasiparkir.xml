@@ -1,6 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:id="@+id/atascontainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/reservasiparkiratas"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        >
+
+        <ImageButton
+            android:id="@+id/backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/buttonback"
+            android:background="@android:color/transparent"
+            android:layout_marginVertical="19dp"
+            android:layout_marginHorizontal="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/atascontainer"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        >
+
+        <TextView
+            android:id="@+id/namafilkom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FILKOM A"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/main"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/fototempatparkiran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fotoparkir"/>
+
+        <LinearLayout
+            android:id="@+id/atributlokasiparkir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextbkg"
+            android:backgroundTint="@color/main"
+            android:orientation="horizontal"
+
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/motorputih"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150/200"
+                android:textSize="20dp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/white"
+                android:layout_marginVertical="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/edittextbkg">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/textTanggalPemesanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Reservasi"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/main"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/edittanggalpemesanan"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittextbkg"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/grey"
+            android:hint="contoh: 05 Oktober 2024"
+            android:paddingHorizontal="20dp"/>
+
+        <TextView
+            android:id="@+id/textWaktuMulai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Waktu Mulai"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/main"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/edittextwaktumulai"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittextbkg"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/grey"
+            android:hint="contoh: 12:00"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="20dp"/>
+
+        <TextView
+            android:id="@+id/textWaktuSelesai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WaktuSelesai"
+            android:fontFamily="@font/poppins"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/main"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/editWaktuSelesai"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittextbkg"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/grey"
+            android:hint="contoh: 05 Oktober 2024"
+            android:paddingHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

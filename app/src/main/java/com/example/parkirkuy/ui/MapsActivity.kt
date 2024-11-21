@@ -31,12 +31,14 @@ import java.nio.charset.StandardCharsets
 class MapsActivity : AppCompatActivity() {
     private lateinit var mapController: MapController
     private lateinit var adapter: LocationAdapter
+    private lateinit var mapView: org.osmdroid.views.MapView
     private var modelMainList: MutableList<ModelMain> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
+        Configuration.getInstance().load(applicationContext, PreferenceManager.getDefaultSharedPreferences(applicationContext))
         initMap()
         setupRecyclerView()
         loadLocationMarkers()
@@ -75,6 +77,10 @@ class MapsActivity : AppCompatActivity() {
                     val jsonLocation = jsonGeometry?.optJSONObject("location")
                     latLoc = jsonLocation?.optDouble("lat", 0.0) ?: 0.0
                     longLoc = jsonLocation?.optDouble("lng", 0.0) ?: 0.0
+
+                    val parkingCapacity = jsonObjectResult.optJSONObject("parking_capacity")
+                    val totalCapacity = parkingCapacity?.optInt("total", 0) ?: 0
+                    val availableCapacity = parkingCapacity?.optInt("available", 0) ?: 0
                 }
                 modelMainList.add(modelMain)
             }
@@ -107,7 +113,7 @@ class MapsActivity : AppCompatActivity() {
                 icon = markerIcon
                 title = model.strName
                 snippet = model.strVicinity
-                relatedObject = model // Simpan model untuk digunakan di InfoWindow
+                relatedObject = model // Tautkan data ModelMain ke marker
             }
 
             val customInfoWindow = CustomInfoWindow(mapView, this)
@@ -124,7 +130,6 @@ class MapsActivity : AppCompatActivity() {
         }
         mapView.invalidate()
     }
-
 
 
     private fun setupRecyclerView() {

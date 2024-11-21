@@ -32,6 +32,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
 
+        <activity android:name=".ui.DetailActivity"/>
+
         <activity
             android:name=".ui.MapsActivity"
             android:exported="false"
