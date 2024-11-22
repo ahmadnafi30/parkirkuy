@@ -96,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        if (email == "user@example.com" && password == "password123") {
+        if (email == "ahmadnafim@student.ub.ac.id" && password == "sayangmamah") {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
 
 

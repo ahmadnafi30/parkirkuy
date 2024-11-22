@@ -1,3 +1,5 @@
+package com.example.parkirkuy.ui
+
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater

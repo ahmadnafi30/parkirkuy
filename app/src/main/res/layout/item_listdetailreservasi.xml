@@ -48,7 +48,8 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/lokasiparkir"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="Parkiran FILKOM A\nUniversitas Brawijaya"
             android:fontFamily="@font/poppins"
@@ -77,6 +78,7 @@
                     android:textSize="12sp"
                     />
                 <TextView
+                    android:id="@+id/statusreservasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
@@ -88,6 +90,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/button_reservasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Detail"

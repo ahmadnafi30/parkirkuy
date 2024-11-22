@@ -33,6 +33,12 @@
             android:value="YOUR_API_KEY" />
 
         <activity android:name=".ui.DetailActivity"/>
+        <activity android:name=".ui.ReservasiActivity"/>
+        <activity android:name=".ui.DaftarReservasiActivity" />
+        <activity android:name=".ui.DetailListParkirActivity" />
+        <activity android:name=".ui.NotificationActivity" />
+
+
 
         <activity
             android:name=".ui.MapsActivity"

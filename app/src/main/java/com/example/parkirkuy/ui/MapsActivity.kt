@@ -1,7 +1,7 @@
 package com.example.parkirkuy.ui
 
-import CustomInfoWindow
 import LocationAdapter
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -42,7 +43,63 @@ class MapsActivity : AppCompatActivity() {
         initMap()
         setupRecyclerView()
         loadLocationMarkers()
+        // Inisialisasi tombol zoom
+//        val zoomInButton = findViewById<ImageButton>(R.id.zoomin)
+//        val zoomOutButton = findViewById<ImageButton>(R.id.zoomout)
+//
+//// Event untuk zoom in
+//        zoomInButton.setOnClickListener {
+//            val currentZoomLevel = mapView.zoomLevelDouble
+//            if (currentZoomLevel < mapView.maxZoomLevel) {
+//                mapController.zoomIn()
+//                mapView.invalidate()
+//            } else {
+//                Toast.makeText(this, "Zoom in maksimum tercapai", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//// Event untuk zoom out
+//        zoomOutButton.setOnClickListener {
+//            val currentZoomLevel = mapView.zoomLevelDouble
+//            if (currentZoomLevel > mapView.minZoomLevel) {
+//                mapController.zoomOut()
+//                mapView.invalidate()
+//            } else {
+//                Toast.makeText(this, "Zoom out minimum tercapai", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+
+        setupZoomButtons()
+
+        setupNotificationButton()
+
+
     }
+
+    private fun setupNotificationButton() {
+        val notificationButton = findViewById<ImageButton>(R.id.gotonotifikasi)
+        notificationButton.setOnClickListener {
+            val intent = Intent(this, NotificationActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+
+    private fun setupZoomButtons() {
+        val zoomInButton = findViewById<ImageButton>(R.id.zoomin)
+        val zoomOutButton = findViewById<ImageButton>(R.id.zoomout)
+
+        zoomInButton.setOnClickListener {
+            val currentZoomLevel = mapView.zoomLevelDouble
+            mapView.controller.setZoom(currentZoomLevel + 1)
+        }
+
+        zoomOutButton.setOnClickListener {
+            val currentZoomLevel = mapView.zoomLevelDouble
+            mapView.controller.setZoom(currentZoomLevel - 1)
+        }
+    }
+
 
     private fun initMap() {
         val mapView = findViewById<org.osmdroid.views.MapView>(R.id.mapView)
@@ -79,8 +136,8 @@ class MapsActivity : AppCompatActivity() {
                     longLoc = jsonLocation?.optDouble("lng", 0.0) ?: 0.0
 
                     val parkingCapacity = jsonObjectResult.optJSONObject("parking_capacity")
-                    val totalCapacity = parkingCapacity?.optInt("total", 0) ?: 0
-                    val availableCapacity = parkingCapacity?.optInt("available", 0) ?: 0
+                    totalCapacity = parkingCapacity?.optInt("total", 0) ?: 0
+                    availableCapacity = parkingCapacity?.optInt("available", 0) ?: 0
                 }
                 modelMainList.add(modelMain)
             }
